@@ -13,7 +13,7 @@
 **3.[Quer]iosity** (Curiosity)/(inquisitiveness)<br>
  It signifies our role in answering even the toughest of the questions and satisfying the 'need of an answer' of our creative users.
  
- **4.Diversity** (inclusion of everyone)<br>
+ **4.Diversity** (queer)/(inclusion of everyone)<br>
  Blending of words of different languages, shows that we accept users from each side of the planet and that we respect the diversity of our users :)
  
 ## Tagline
