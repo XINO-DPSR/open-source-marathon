@@ -27,3 +27,6 @@ Use PEP8 style for Python code and Prettier for HTML, CSS and JavaScript. <br>
 
 
 More details are available at https://docs.google.com/document/d/10sV36zfKDqhW0Cg1Yx9CKTsq75WoDiuf5BIBKE4Dla4/edit?fbclid=IwAR0l7oT7c7UL6kCY7ahzwQOPEZsdc9grYRb5kQYYxA9KyFBfSlBIbWZx11U.
+
+# Updates
+1. There are no task deadlines now, so you can work at your own pace!
