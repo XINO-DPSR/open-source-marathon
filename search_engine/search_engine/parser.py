@@ -1,5 +1,6 @@
 #! /usr/bin/python
-# parser.py - Reads the data fetched by the crawler, parses it, returns whatever metadata it needs to.
+# parser.py - Reads the data fetched by the crawler, parses it,
+# returns whatever metadata it needs to.
 
 from html.parser import HTMLParser
 
