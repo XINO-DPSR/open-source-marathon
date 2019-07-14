@@ -30,7 +30,4 @@ def crawler(url):
     parser.links = []
     parser.feed(res.text)   # feed source code to parser
     links = [link['href'] for link in parser.links]
-    print(links)
     return res.text, access_time, links
-
-crawler('https://www.scottseverance.us/mailto.html')
