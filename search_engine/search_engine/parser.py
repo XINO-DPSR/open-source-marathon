@@ -26,14 +26,14 @@ def crawler(url):
     parser.feed(res.text)   # feed source code to parser
     links = [link['href'] for link in parser.links]
     return res.text, access_time, links
-
+# [{'tag': }]
 
 class metaParser(HTMLParser):
-    metadata = []
+    
     def handle_starttag(self, tag, attrs):
-        if tag == 'meta' or tag == 'title' or tag == 'link':
-            attr = dict(attrs)
-            
+        if tag == 'head':
+            metadata.setdefault(tag, [])
+                   
 
 
 def parser(source_code):
