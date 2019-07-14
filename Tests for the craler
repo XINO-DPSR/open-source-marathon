@@ -1,0 +1,21 @@
+Following are some tests the crawler should be able to perform:
+
+Test the entire crawl depth: Confirm that documents are structured correctly in every level. (As noted earlier, crawl depth should be as shallow as possible.) 
+If there are problems, check the filters on the target folders. If nothing is returned, check the authentication settings in the associated Data Source and Crawler Web Service.
+
+	
+Check the document metadata: Is it stored in the appropriate properties? Does it match the metadata in the source repository? If there are problems, check the Document Type settings in the Crawler editor, and check the mappings for each associated Document Type.
+
+ 
+	
+Click through to crawled documents from each crawled directory: If there are problems, check the gateway settings in the Crawler Web Service editor.
+
+ 
+	
+Test refreshing documents to confirm that they reflect modifications: If there are problems, make sure you are providing the correct document signature.
+
+ 
+	
+Check logs after every crawl: The log can reveal problems even if the portal reports a successful crawl.
+
+ 
