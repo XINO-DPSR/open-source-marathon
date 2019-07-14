@@ -6,7 +6,7 @@ The user may not know immediately whether a given link is relevant to them or no
 <br>
 the following image is an example of cluster of tabs due to no 'webpage preview feature'-
 <br>
-![Tabs](rachitTabs.PNG)
+![Tabs](https://github.com/rachittt/open-source-marathon/blob/feature/rachitTabs.PNG)
 <br>
 <br>
 
@@ -14,4 +14,4 @@ the following image is an example of cluster of tabs due to no 'webpage preview 
 <br>
 following is an example design of preview-
 <br>
-![Preview](RachitPreview.png)
+![Preview](https://github.com/rachittt/open-source-marathon/blob/feature/RachitPreview.png)
