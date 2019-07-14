@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Queria</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body background="bg.png">
+
+	<section>
+		<h1>Queria</h1>
+		<input type="text" name="Search" placeholder="What are you looking for?" class="searchbar"> <br>
+		<p>
+		(this is where the tagline would come & queria is still in the process of development for xino)</p>
+	</section>
+
+	<!--<section>
+		<h1 class="name" style="color: #D81B60">Queria</h1>
+		<input type="text" name="Search" placeholder="What are you looking for?" class="searchbar">
+	</section> -->
+	<ul>
+		<li>
+			<span>Dark</span>
+			<span>Light</span>
+		</li>
+	</ul>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('ul').click(function(){
+				$('ul').toggleClass('active')
+				$('section').toggleClass('dark')
+			})
+		})
+	</script>
+	</body>
+</html>
