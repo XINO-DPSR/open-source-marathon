@@ -1,0 +1,40 @@
+<svg width="1152" height="700" viewBox="0 0 1152 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0)">
+<rect width="1152" height="700" fill="white"/>
+<path d="M547 698H-1V80.5126C-1 80.5126 238 178.709 492 80.5126C746 -17.6838 1152 107.134 1152 123.5V698H547Z" fill="url(#paint0_linear)"/>
+<path d="M-37 539L34.2175 499L102.572 539L172 499" stroke="#6DF0F0" stroke-width="2"/>
+<path d="M-37 550L34.2175 510L102.572 550L172 510" stroke="#6DF0F0" stroke-width="2"/>
+<path d="M-37 561L34.2175 521L102.572 561L172 521" stroke="#6DF0F0" stroke-width="2"/>
+<path d="M-37 572L34.2175 532L102.572 572L172 532" stroke="#6DF0F0" stroke-width="2"/>
+<rect x="101" y="234" width="32" height="32" rx="5" fill="#1C64D7"/>
+<rect x="175" y="234" width="32" height="32" rx="5" fill="#1C64D7"/>
+<rect x="249" y="234" width="32" height="32" rx="5" fill="#1C64D7"/>
+<rect x="140" y="301" width="32" height="32" rx="5" fill="#1C64D7"/>
+<rect x="214" y="301" width="32" height="32" rx="5" fill="#1C64D7"/>
+<rect x="288" y="301" width="32" height="32" rx="5" fill="#1C64D7"/>
+<circle cx="974.841" cy="474.191" r="12" transform="rotate(-45 974.841 474.191)" fill="#3379E7"/>
+<circle cx="1001.71" cy="447.321" r="12" transform="rotate(-45 1001.71 447.321)" fill="#3379E7"/>
+<circle cx="1028.58" cy="420.451" r="12" transform="rotate(-45 1028.58 420.451)" fill="#3379E7"/>
+<circle cx="1055.45" cy="393.581" r="12" transform="rotate(-45 1055.45 393.581)" fill="#3379E7"/>
+<circle cx="1082.32" cy="366.711" r="12" transform="rotate(-45 1082.32 366.711)" fill="#3379E7"/>
+<circle cx="1109.19" cy="339.841" r="12" transform="rotate(-45 1109.19 339.841)" fill="#3379E7"/>
+<circle cx="1136.06" cy="312.971" r="12" transform="rotate(-45 1136.06 312.971)" fill="#3379E7"/>
+<circle cx="947.971" cy="501.061" r="12" transform="rotate(-45 947.971 501.061)" fill="#3379E7"/>
+<circle cx="1031.86" cy="474.191" r="12" transform="rotate(-45 1031.86 474.191)" fill="#3379E7"/>
+<circle cx="1058.73" cy="447.321" r="12" transform="rotate(-45 1058.73 447.321)" fill="#3379E7"/>
+<circle cx="1085.6" cy="420.451" r="12" transform="rotate(-45 1085.6 420.451)" fill="#3379E7"/>
+<circle cx="1112.47" cy="393.581" r="12" transform="rotate(-45 1112.47 393.581)" fill="#3379E7"/>
+<circle cx="1139.34" cy="366.711" r="12" transform="rotate(-45 1139.34 366.711)" fill="#3379E7"/>
+<circle cx="1166.21" cy="339.841" r="12" transform="rotate(-45 1166.21 339.841)" fill="#3379E7"/>
+<circle cx="1004.99" cy="501.061" r="12" transform="rotate(-45 1004.99 501.061)" fill="#3379E7"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear" x1="197.172" y1="270.223" x2="835.007" y2="719.112" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2378F7"/>
+<stop offset="1" stop-color="#063DCD"/>
+</linearGradient>
+<clipPath id="clip0">
+<rect width="1152" height="700" fill="white"/>
+</clipPath>
+</defs>
+</svg>
