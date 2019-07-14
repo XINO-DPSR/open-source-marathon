@@ -11,12 +11,13 @@ class MyHTMLParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag == 'a':
             attr = dict(attrs)
-            if 'href' in attr:   
+            if 'href' in attr and not attr['href'].startswith('mailto:') \
+                and not attr['href'].startswith('tel:'):
                 self.links.append(attr)
 
 
 def crawler(url):
-    
+
     # Download webpage.
     res = requests.get(url)
     res.raise_for_status()
@@ -29,4 +30,7 @@ def crawler(url):
     parser.links = []
     parser.feed(res.text)   # feed source code to parser
     links = [link['href'] for link in parser.links]
+    print(links)
     return res.text, access_time, links
+
+crawler('https://www.scottseverance.us/mailto.html')
