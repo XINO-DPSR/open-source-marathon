@@ -1,5 +1,5 @@
 #! /usr/bin/python
-# __init__.py - Make a basic crawler.
+# webcrawler.py - Make a basic crawler.
 
 import requests
 from html.parser import HTMLParser
@@ -12,7 +12,7 @@ class MyHTMLParser(HTMLParser):
         if tag == 'a':
             attr = dict(attrs)
             if 'href' in attr and not attr['href'].startswith('mailto:') \
-                and not attr['href'].startswith('tel:'):
+                    and not attr['href'].startswith('tel:'):
                 self.links.append(attr)
 
 
