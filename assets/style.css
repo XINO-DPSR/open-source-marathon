@@ -239,14 +239,10 @@ ul{
   font-family: 'Josefin Sans';
 }
 .ham_img{
-  height: 30vh;
+  height: 10vh;
   width: 30vh;
   margin: auto;
   padding-top: 10vh;
-  background-image: url('pikachu.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 .butt{
   margin: 3vh;
