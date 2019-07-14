@@ -15,9 +15,24 @@ class metaParser(HTMLParser):
             attr['tag'] = tag
             self.metadata.append(attr)
 
+    def handle_data(self, data):
+        words = data.split(' ')
+        for word in words:
+            self.source_text.append(word)
+
 
 def parser(source_code):
+    '''
+    Input: Source code obtained as first return \
+        value of crawler method.
+    Returns: myParser.metadata - List of dictionaries \
+                containing metadata information.
+            data - Set of all individual words found \
+                in source code.
+    '''
     myParser = metaParser()
     myParser.metadata = []
+    myParser.source_text = []
     myParser.feed(source_code)
-    return myParser.metadata
+    data = set(myParser.source_text)
+    return myParser.metadata, data
