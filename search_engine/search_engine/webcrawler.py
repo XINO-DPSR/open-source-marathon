@@ -5,14 +5,18 @@ import requests
 from html.parser import HTMLParser
 from datetime import datetime
 
+
 class MyHTMLParser(HTMLParser):
+
     def handle_starttag(self, tag, attrs):
         if tag == 'a':
             attr = dict(attrs)
-            if 'href' in attr:
+            if 'href' in attr:   
                 self.links.append(attr)
 
+
 def crawler(url):
+    
     # Download webpage.
     res = requests.get(url)
     res.raise_for_status()
