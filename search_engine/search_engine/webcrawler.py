@@ -26,5 +26,3 @@ def crawler(url):
     parser.feed(res.text)   # feed source code to parser
     links = [link['href'] for link in parser.links]
     return res.text, access_time, links
-
-crawler('https://automatetheboringstuff.com/chapter15/')
