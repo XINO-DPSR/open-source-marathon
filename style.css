@@ -9,6 +9,7 @@ h1{
    text-align: center;
 }
 p{
+	
    font-size: 2em;
 }
 
@@ -24,6 +25,7 @@ section{
    height: 100vh;
    padding: 100px;
 }
+
 .searchbar{
    display: block;
    margin-left: auto;
@@ -34,7 +36,7 @@ section{
    font-size: 1em;
    border-radius: 20px;
    border-color: #000;
-}
+ }
  section.dark{
    background: #262626;
    color: #fff;
