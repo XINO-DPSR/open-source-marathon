@@ -1,0 +1,45 @@
+.hor{
+    width:50wh;
+    float: left;;
+
+}
+#search{
+    padding: 17% 0 0 7%;
+    position: absolute;
+    font-size: 1.5em;
+    height:5vh;
+    width:30wh;
+}
+#search img{
+    height:10vh;
+}
+.hor2{
+    width:50wh;
+    float: left;;
+
+}
+.hor2 img{    
+    height:100vh;
+    padding-left:95.5%;
+    background-position: center;
+}
+button{
+    border-radius: 3px;
+    height:50px;
+    width:170px;
+    font-size: 1.05em;
+    margin-top: 20px;
+    color:white;
+    font-family: 'Open Sans', sans-serif;
+    border:none;
+    background-color:#000000;
+    transition-duration: 0.2s;
+}
+button:hover{
+    background-color: rgb(255, 255, 255);
+    color:#000000;
+}
+input:hover{
+    background-color: #ccc;
+    color:#fff;
+}
