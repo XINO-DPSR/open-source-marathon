@@ -17,5 +17,5 @@ def crawl_web(initial_url):
                 crawl.append(url)
         title = re.findall(r'<title>(.*)</title>', str(r.content))
         date = datetime.datetime.now()
-        return crawl, title, date
+        return crawl, title, date, str(r.content)
 print(crawl_web("https://xino.in/"))
