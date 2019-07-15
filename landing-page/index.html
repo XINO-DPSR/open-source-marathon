@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Search | Voithos</title>
+		<link rel="stylesheet" type="text/css" href="assets/style/style.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="assets/style/normalize.css"
+		/>
+		<script type="text/javascript" src="assets/js/script.js"></script>
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.js"
+			integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body class="">
+		<div class="cover"></div>
+		<nav>
+			<div class="left">
+				<h1>Voithos</h1>
+			</div>
+			<header>
+				<div>
+					<ul>
+						<li class="current">Search</li>
+						<li>About</li>
+						<li>Contact</li>
+					</ul>
+				</div>
+			</header>
+		</nav>
+		<main>
+			<div class="card">
+				<div class="inner-card">
+					<div class="card-item">
+						<h1>
+							<div
+								id="thist"
+								class="glitch"
+								data-glitch="Search for anything!"
+							>
+								Search for anything!
+							</div>
+						</h1>
+					</div>
+					<div class="header-main">
+						<div class="container">
+							<div class="item">
+								<form class="form">
+									<input
+										type="email"
+										class="field"
+										placeholder="Search Here!"
+										required
+									/>
+									<button
+										type="button"
+										class="btn primary inside uppercase"
+									>
+										GO!
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<br /><br />
+					<h3
+						style="display: inline-block; transform: translateY(6.5px);"
+					>
+						Dark Mode:&nbsp
+					</h3>
+					<label class="switch">
+						<input type="checkbox" id="check" />
+						<span class="slider round"></span>
+					</label>
+				</div>
+			</div>
+		</main>
+		<footer></footer>
+		<script>
+			$("#check").click(function() {
+				var thisCheck = $(this);
+				if (thisCheck.is(":checked")) {
+					$("body").addClass("dark");
+					$(".card").addClass("dark");
+					$(".cover").addClass("dark");
+				} else if (!thisCheck.is(":checked")) {
+					$("body").removeClass("dark");
+					$(".card").removeClass("dark");
+					$(".cover").removeClass("dark");
+				}
+			});
+		</script>
+	</body>
+</html>
