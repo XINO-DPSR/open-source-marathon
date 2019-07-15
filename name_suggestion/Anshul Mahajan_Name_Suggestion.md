@@ -1,0 +1,1 @@
+Voithos, which is the greek word for "assistant", is very suitable for the search engine. It showcases the internet surfer as the "master", often ensuring satisfaction. It is also has a modern feel to it.
