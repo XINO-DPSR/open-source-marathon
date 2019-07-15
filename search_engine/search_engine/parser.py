@@ -18,7 +18,10 @@ class metaParser(HTMLParser):
     def handle_data(self, data):
         words = data.split(' ')
         for word in words:
-            self.source_text.append(word)
+            ascii_word = ''.join([l if ord(l) < 128 else ' ' for l in word])
+            ascii_word = ascii_word.split(' ')
+            for w in ascii_word:
+                self.source_text.append(w)
 
 
 def parser(source_code):
