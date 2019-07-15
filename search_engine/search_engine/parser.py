@@ -41,5 +41,4 @@ def parser(source_code):
     myParser.source_text = []
     myParser.feed(source_code)
     data = set(myParser.source_text)
-    print(data)
     return myParser.metadata, data
