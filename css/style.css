@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "ProductSans";
+  src: url(css/productsans.ttf);
+}
+
+body {
+  background-color: #1e88e5;
+  font-family: "ProductSans";
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1e88e5;
+}
+
+.theme-change {
+  background-color: #000;
+}
+
+.theme-change h1 {
+  color: #fff;
+}
+
+.theme-change h3 {
+  color: #fff;
+}
+
+.theme-change .card {
+  background-color: rgb(41, 41, 41);
+}
+h1 {
+  text-align: center;
+  color: #000;
+  font-size: 7em;
+  margin-bottom: -20px;
+}
+
+h3 {
+  text-align: end;
+  color: #000;
+  margin-right: 80px;
+  margin-bottom: 6%;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  width: 45%;
+  margin: auto;
+  display: block;
+  margin-top: 10%;
+  padding: 1px 10px 60px 10px;
+  box-shadow: 100px;
+}
+
+.btn {
+  font-family: "ProductSans";
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  background-color: #fff;
+  border: none;
+  padding: 8px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 1%;
+  margin-bottom: 1%;
+}
+
+.theme-change .btn {
+  background-color: rgb(41, 41, 41);
+  color: #fff;
+}
+.searchbar {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  font-size: 30px;
+  font-family: "ProductSans";
+  border: solid rgba(0, 0, 0, 0.24);
+  padding: 10px;
+  width: 550px;
+}
