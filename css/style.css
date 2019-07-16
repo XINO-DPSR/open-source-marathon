@@ -1,0 +1,112 @@
+:root {
+  --primary-color: #fafafa;
+  --bg-color: #039be5;
+  --border-color: #039be5;
+  --font-color: #000;
+}
+
+[data-theme="dark"] {
+  --primary-color: #616161;
+  --bg-color: #212121;
+  --border-color: #212121;
+  --font-color: #fff;
+}
+
+html,
+body {
+  background-color: var(--bg-color);
+}
+
+.searchbar {
+  padding: 15px;
+  border-radius: 5px;
+  width: 710px;
+  font-family: "Product-Sans";
+  border-color: var(--border-color);
+  border-width: 3px;
+}
+
+.box {
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  width: 50%;
+  margin: auto;
+  margin-top: 150px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+.logo {
+  padding-top: 30px;
+  height: 150px;
+  margin-left: 300px;
+  padding-bottom: 80px;
+}
+
+@font-face {
+  font-family: Product-Sans;
+  src: url(fonts/product_sans.ttf);
+}
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  margin-left: 1250px;
+}
+h6 {
+  margin-left: 10px;
+  font-size: 1rem;
+  font-family: "Product-Sans";
+  color: var(--font-color);
+}
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
