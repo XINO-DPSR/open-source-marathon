@@ -1,0 +1,1 @@
+Provide a minimised preview of the website to increase user satisfaction.
