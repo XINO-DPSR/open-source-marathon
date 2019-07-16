@@ -35,9 +35,9 @@ $(document).ready(function(){
     //
     // }
   })
-  $('.logo').click(function(){
-    $('body, html').animate({scrollTop: $('.land').offset().top}, 500)
-  })
+  // $('.logo').click(function(){
+  //   $('body, html').animate({scrollTop: $('.land').offset().top}, 500)
+  // })
   $('.bars, .item').click(function(){
     $('.bar1').toggleClass('bar1_ac')
     $('.bar2').toggleClass('bar2_ac')

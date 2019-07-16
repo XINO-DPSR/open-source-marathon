@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <link rel="icon" href="assets/logo.png">
@@ -10,47 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Cazar</title>
   </head>
+  <script type="text/javascript" src="assets/jq.js"></script>
+  <script type="text/javascript" src="main.js"></script>
   <body>
-    <section class="land">
-      <div class="terms">
-        <a href="#" class="policy">View EULA Priacy Policy.</a>
-      </div>
-      <div class="bglogo"></div>
-        <div class="ham">
-          <div class="bars">
-            <div class="bar bar1"></div>
-            <div class="bar bar2"></div>
-            <div class="bar bar3"></div>
-          </div>
-          <div class="profile">
-            <div class="ham_img"></div>
-            <div class="menu">
-              <ul>
-                <li class="item it1">User</li>
-                <li class="item it2">Theme <br> Dark | Light</li>
-                <li class="item it5">Recents</li>
-                <li class="item it3">About Us</li>
-                <li class="item it4">Settings</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      <div class="container lin">
-        <div class="comp_name">
-          <div class="complogo"></div>
-          Cazar
-        </div>
-        <br><br>
-      <div class="tender">
-        <center><input type="text" name="Search" placeholder="What are you looking for?" class="searchbar"> <br>
-          <br><div class="whyno">
-            *You need to know what you are searching for.
-          </div>
-           <br>
-        <input type="submit" value="Search" class="butt b2">
-      </div>
-    </div>
-    </section>
     <section class="main">
       <div class="nav">
         <div class="logo">
@@ -58,30 +19,30 @@
         </div>
 
         <div class="bartender2">
-          <input type="text" name="search2" placeholder="What are you looking for?" class="searchbar2"></input>
+          <input type="text" name="search2" placeholder="What are you looking for?" class="searchbar2" onkeyup="showResult(this.value)"></input>
         </div>
       </div>
       <div class="result_box">
         <div class="timer"></div>
         <div class="results">
           <div class="container">
-         <div class="result r1">
+         <div class="result4 r1">
               <div class="resulthead row">
-                <div class="result_data container-fluid">
-                  <div class="rh col-md-10">
-                    Example for search results
+                <div class="result_data container-fluid" id="rd">
+                  <div class="rh col-md-10" id="rh">
+
                   </div>
-                  <div class="webphoto wp1"></div>
+                  <!-- <div class="webphoto wp1"></div>
                   <div class="webname col-md-8">
                     www.example.com
                   </div>
                   <div class="rp col-md-8">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </div>
+                  </div> -->
                 </div>
               </div>
           </div>
-          <div class="infobox">
+          <!-- <div class="infobox">
             <div class="infohead">
               <div class="infoh">
                 Github
@@ -92,11 +53,11 @@
             <div class="infotext text-center">
               GitHub is an American company that provides hosting for software development version control using Git. It is a subsidiary of Microsoft, which acquired the company in 2018 for $7.5 billion. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features.
             </div>
-          </div>
-          <div class="result r2">
+          </div> -->
+          <!-- <div class="result r2">
                <div class="resulthead row">
-                 <div class="result_data container-fluid">
-                   <div class="rh col-md-10">
+                 <div class="result_data container-fluid" id="rd">
+                   <div class="rh col-md-10" id="rh">
                      Lorem Ipsum
                    </div>
                    <div class="webphoto wp2"></div>
@@ -108,11 +69,11 @@
                    </div>
                  </div>
                </div>
-           </div>
-           <div class="result r3">
+           </div> -->
+           <!-- <div class="result r3">
                 <div class="resulthead row">
-                  <div class="result_data container-fluid">
-                    <div class="rh col-md-10">
+                  <div class="result_data container-fluid" id="rd">
+                    <div class="rh col-md-10" id="rh">
                       Lorem Ipsum dolor sit amet
                     </div>
                     <div class="webphoto wp3"></div>
@@ -124,14 +85,14 @@
                     </div>
                   </div>
                 </div>
-            </div>
+            </div> -->
         </div>
       </div>
         <!-- <div class="results results2">
           <div class="result r4">
                <div class="resulthead row">
-                 <div class="result_data container-fluid">
-                   <div class="rh col-md-10">
+                 <div class="result_data container-fluid" id="rd">
+                   <div class="rh col-md-10" id="rh">
                      Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                    </div><br>
                    <div class="webname col-md-8">
@@ -145,8 +106,8 @@
            </div>
            <div class="result r5">
                 <div class="resulthead row">
-                  <div class="result_data container-fluid">
-                    <div class="rh col-md-10">
+                  <div class="result_data container-fluid" id="rd">
+                    <div class="rh col-md-10" id="rh">
                       Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                     </div><br>
                     <div class="webname col-md-8">
@@ -160,8 +121,8 @@
             </div>
             <div class="result r6">
                  <div class="resulthead row">
-                   <div class="result_data container-fluid">
-                     <div class="rh col-md-10">
+                   <div class="result_data container-fluid" id="rd">
+                     <div class="rh col-md-10" id="rh">
                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                      </div><br>
                      <div class="webname col-md-8">
@@ -178,6 +139,5 @@
     </section>
 
   </body>
-  <script type="text/javascript" src="assets/jq.js"></script>
   <script type="text/javascript" src="assets/func.js"></script>
 </html>
