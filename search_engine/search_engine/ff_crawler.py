@@ -5,6 +5,7 @@ import requests, sys, time
 from html.parser import HTMLParser
 from datetime import datetime
 from os import path
+from urllib import robotparser
 
 
 class MyHTMLParser(HTMLParser):
@@ -17,42 +18,26 @@ class MyHTMLParser(HTMLParser):
                 self.links.append(attr)
 
 
-def ffs_crawler(url):
+def ff_crawler(url):
 
-    headers = {'User-Agent': 'Slurp'}
-    possible_uas = ['*', 'Slurp']
-    # Download robots.txt file.
-    robots_txt = requests.get(path.join(url, 'robots.txt'), headers=headers)
-    try:
-        robots_txt.raise_for_status()
-        text = robots_txt.text.split('\n')
-        text_dict = {'Disallow:': [], 'Crawl-delay:': []}
-        lineNum = 0
-        while lineNum < len(text):
-            if text[lineNum].split(' ')[0] in possible_uas:
-                print(text[lineNum])
-                for i in range(lineNum + 1, len(text)):
-                    if text[i].startswith('User-agent:'):
-                        lineNum = i - 1
-                        break
-                    line = text[i].split(' ')
-                    print(line)
-                    keyword = line[0]
-                    if keyword in text_dict:
-                        text_dict[keyword].append(path.join(url, line[1]))
-            lineNum += 1
-        if text_dict['Crawl-delay:']:
-            delay = max(text_dict['Crawl-delay:'])
-        else:
-            delay = 0
+    rp = robotparser.RobotFileParser()
+    rp.set_url(path.join(url, 'robots.txt'))
+    rp.read()
 
-        print(text_dict)
-        if url in text_dict['Disallow:']:
-            print('Cannot crawl:', url)
-            sys.exit()
+    if not rp.can_fetch('*', url):
+        sys.exit()
 
-    except Exception as err:
-        print('robots.txt file for', url, 'returned:', err)
+    rrate = rp.request_rate('*')
+    delay = rp.crawl_delay('*')
+    if rrate == None and delay == None:
+        crawl_delay = 0
+    elif delay == None:
+        crawl_delay = rrate.seconds // rrate.requests
+    elif rrate == None:
+        crawl_delay = delay
+    else:
+        crawl_delay = max(rrate.seconds // rrate.requests, delay)
+
     # Download webpage.
     res = requests.get(url)
     res.raise_for_status()
@@ -65,14 +50,12 @@ def ffs_crawler(url):
     parser.links = []
     parser.feed(res.text)   # feed source code to parser
     links = [link['href'] for link in parser.links]
-    return res.text, access_time, links, delay
+    return res.text, access_time, links, crawl_delay
 
-def ffs_crawler_driver(url):
+def ff_crawler_driver(url):
     try:
         while True:
-            data = list(ffs_crawler(url))
+            data = list(ff_crawler(url))
             time.sleep(data[3])
     except KeyboardInterrupt:
         print('Done crawling.')
-
-ffs_crawler_driver('https://buzzfeed.com')
