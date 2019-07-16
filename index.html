@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="css/style.css" type="text/css" rel="stylesheet">
-        <title>Reqit</title>
-    </head>
-    <body>
-        <div class="box">
-            <img src="media/logo.png" class="logo" id="logo">
-            <input type = "text" placeholder="Request it!" class="searchbar">
-        </div>
-        <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" />
-                    <div class="slider round"></div>
-              </label>
-              <h6>Enable Dark Mode!</h6>
-            </div>
-            <script>
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-const currentTheme = localStorage.getItem('theme');
+  <head>
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <title>Reqit</title>
+  </head>
+  <body>
+    <div class="box">
+      <img src="media/logo.png" class="logo" id="logo" />
+      <input type="text" placeholder="Request it!" class="searchbar" />
+    </div>
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div class="slider round"></div>
+      </label>
+      <h6>Enable Dark Mode!</h6>
+    </div>
+    <script>
+      const toggleSwitch = document.querySelector(
+        '.theme-switch input[type="checkbox"]'
+      );
+      const currentTheme = localStorage.getItem("theme");
 
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    document.getElementById('logo').src="media/logo.png";
-  
-    if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-        document.getElementById('logo').src="media/logo-bw.png";
-    }
-}
+      if (currentTheme) {
+        document.documentElement.setAttribute("data-theme", currentTheme);
+        document.getElementById("logo").src = "media/logo.png";
 
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        document.getElementById('logo').src="media/logo-bw.png";
-    }
-    else {        document.documentElement.setAttribute('data-theme', 'light');
-          localStorage.setItem('theme', 'light');
-          document.getElementById('logo').src="media/logo.png";
-    }    
-}
+        if (currentTheme === "dark") {
+          toggleSwitch.checked = true;
+          document.getElementById("logo").src = "media/logo-bw.png";
+        }
+      }
 
-toggleSwitch.addEventListener('change', switchTheme, false);</script>
-    </body>
+      function switchTheme(e) {
+        if (e.target.checked) {
+          document.documentElement.setAttribute("data-theme", "dark");
+          localStorage.setItem("theme", "dark");
+          document.getElementById("logo").src = "media/logo-bw.png";
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+          localStorage.setItem("theme", "light");
+          document.getElementById("logo").src = "media/logo.png";
+        }
+      }
+
+      toggleSwitch.addEventListener("change", switchTheme, false);
+    </script>
+  </body>
 </html>
