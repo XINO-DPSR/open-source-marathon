@@ -19,4 +19,3 @@ def crawl_web(initial_url):
         date = datetime.datetime.now()
         src = str(r.text)
         return crawl, title, src, date
-print(crawl_web("https://sayamkanwar.com/"))
