@@ -1,0 +1,28 @@
+html, body{
+    background-color: #2E3192;
+}
+
+.searchbar{
+    padding:10px;
+    border-radius: 5px;
+    width:700px;
+}
+
+.box {
+    background-color:#FFF;
+    border-radius:20px;
+    padding-left:100px;
+    padding-right:100px;
+    width:50%;
+    margin:auto;
+    margin-top:150px;
+    padding-top:50px;
+    padding-bottom:100px;
+}
+
+.logo {
+    padding-top:30px;
+    height:150px;
+    margin-left:300px;
+    padding-bottom:80px;
+}
