@@ -1,7 +1,9 @@
 #! /usr/bin/python
 # webcrawler.py - Make a basic crawler.
 
-import requests, sys, time
+import requests
+import sys
+import time
 from html.parser import HTMLParser
 from datetime import datetime
 from os import path
@@ -29,11 +31,12 @@ def ff_crawler(url):
 
     rrate = rp.request_rate('*')
     delay = rp.crawl_delay('*')
-    if rrate == None and delay == None:
+    
+    if rrate is None and delay is None:
         crawl_delay = 0
-    elif delay == None:
+    elif delay is None:
         crawl_delay = rrate.seconds // rrate.requests
-    elif rrate == None:
+    elif rrate is None:
         crawl_delay = delay
     else:
         crawl_delay = max(rrate.seconds // rrate.requests, delay)
@@ -51,6 +54,7 @@ def ff_crawler(url):
     parser.feed(res.text)   # feed source code to parser
     links = [link['href'] for link in parser.links]
     return res.text, access_time, links, crawl_delay
+
 
 def ff_crawler_driver(url):
     try:
