@@ -1,0 +1,4 @@
+#https://sayamkanwar.com/work#
+Sayam Kanwar|author
+width=device-width, initial-scale=1.0|viewport
+#Sayam Kanwar WorkAn archive of my projects <- Back to HomeaBridgeReal Time Speech Summarizer  CIBOAn Online Food Delivery System  BaseKitA PHP Library  DubItYoutube Video Language Converter  DaaksterAI based Mail Summarizer  The Trade TycoonsA game based on Barter System  PinGoTravel Planner  EmpathizeOnline Therapist ChatBot  DPSR MUNMUN Society of DPS Rohini   More projects coming soon. Made with  by Sayam Kanwar    

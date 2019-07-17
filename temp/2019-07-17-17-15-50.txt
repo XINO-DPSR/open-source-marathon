@@ -1,0 +1,23 @@
+#https://sayamkanwar.com/soon.html#
+#
+
+
+	Coming Soon | Sayam Kanwar
+	
+	
+		body {
+			background: #474787;
+		}
+
+		h1 {
+			color: #fff;
+			font-size: 3.5em;
+			margin-top: 270px;
+		}
+	
+
+
+
+Coming Soon!
+
+
