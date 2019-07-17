@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+      <div class="main">
+        <div class="logo">
+          <img src="inqlogo3.png" >
+
+        </div>
+        <div class="searchbar">
+          <input class="subject" name="subject" placeholder="Looking for..."></input>
+          <button type="submit" form="nameform" class="searchbtn" value="Submit"><a href="#">Search</a> </button>
+        </div>
+        <div class="themebtn">
+          <ul>
+            <li>
+              <span>Dark</span>
+              <span>Light</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+        </body>
+
+          <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+          <script type="text/javascript">
+            $(document).ready(function(){
+              $('ul').click(function(){
+                  $('ul').toggleClass('active')
+                  $('body').toggleClass('dark')
+                  $('img').toggleClass('dark')
+              })
+            })
+          </script>
+
+
+
+
+
+</html>
