@@ -1,18 +1,16 @@
-import urllib2  # Libraries
+import urllib2 # Libraries
 import sys
-import HTMLParser  # HTMLParser
+import HTMLParser # HTMLParser
 import robots
 import time
 
 global baseURL
 baseURL = ''
 
-
 class URLParser():
     def __init__(self):
         self.urlconvs = ["https://", "http://"]
         self.doNots = ["mailto:", "tel:"]
-
     def parse(self, url, baseurl=False):
         if url[0:2] == "//":
             url = "http:" + url
@@ -29,7 +27,7 @@ class URLParser():
             if i in url:
                 return ''
         okurl = False
-
+        
         for i in self.urlconvs:
             if i in url:
                 okurl = True
@@ -37,33 +35,29 @@ class URLParser():
             url = "http://" + url
         return url
 
-
 crawled = []
 
 allows = []
 disallows = []
 
-
 class Parser(HTMLParser.HTMLParser):
 
-    anchors = list()
-    data = ""
+   anchors = list()
+   data = ""
 
-    # HTML Parser Methods
-    def handle_starttag(self, startTag, attrs):
-        if startTag == "a":
-            for attr in attrs:
-                if attr[0] == "href":
-                    urlparser = URLParser()
-                    newurl = urlparser.parse(attr[1], baseURL)
-                    if newurl == '':
-                        pass
-                    else:
+   #HTML Parser Methods
+   def handle_starttag(self, startTag, attrs):
+       if startTag == "a":
+           for attr in attrs:
+               if attr[0] == "href":
+                   urlparser = URLParser()
+                   newurl = urlparser.parse(attr[1], baseURL)
+                   if newurl == '':
+                       pass
+                   else:
                         self.anchors.append(newurl)
-
-    def handle_data(self, data):
-        self.data += data
-
+   def handle_data(self, data):
+       self.data+=data
 
 class Crawler():
     def __init__(self, baseurl):
@@ -76,26 +70,22 @@ class Crawler():
         self.externalURLs = []
         self.toCrawl = []
         self.crawl(self.baseURL)
-
-    def crawl(self, url):  # Main Function
+    def crawl(self, url): # Main Function
         urlparser = URLParser()
         newurl = urlparser.parse(url)
         if newurl not in crawled:
             global baseURL
             if baseURL in newurl:
-                headers = {}  # Initializes header
-                # Sets User Agent
-                headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"
-                # Initializes Request
-                req = urllib2.Request(newurl, headers=headers)
-                res = urllib2.urlopen(req)  # Gets Response
-                info = res.info()  # Gets Request info
+                headers = {} # Initializes header
+                headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36" # Sets User Agent
+                req = urllib2.Request(newurl, headers = headers) # Initializes Request
+                res = urllib2.urlopen(req) # Gets Response
+                info = res.info() # Gets Request info
                 if str(res.code)[0] == "2":
                     parser = Parser()
                     parser.baseurl = self.baseURL
                     parser.feed(res.read())
-                    f = open(
-                        "data/"+time.strftime("%Y-%m-%d-%H-%M-%S")+".txt", "w+")
+                    f = open("data/"+time.strftime("%Y-%m-%d-%H-%M-%S")+".txt", "w+")
                     f.write("# "+newurl+"\n"+parser.data)
                     f.close()
                     print "Visited " + newurl + ","
@@ -151,7 +141,6 @@ class Crawler():
                 self.externalURLs.append(newurl)
                 self.crawled.append(newurl)
 
-
 def main(url):
     parser = robots.Parser(url)
     global allows
@@ -173,8 +162,7 @@ def main(url):
     global baseURL
     baseURL = url
     crawler = Crawler(newurl)
+    
 
-
-if __name__ == '__main__':
-    # Passes in URL as parameter ex. (python main.py https://google.com)
-    main(sys.argv[1])
+if __name__ == '__main__': # Only runs file as long as it's not used as a library.
+    main(sys.argv[1]) # Passes in URL as parameter ex. (python main.py https://google.com)
