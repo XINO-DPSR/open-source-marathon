@@ -1,4 +1,5 @@
 import datetime
+import json
 import re
 import requests
 import time
@@ -106,3 +107,10 @@ def parse(data):
             tokens.append(word)
 
     return tokens
+
+
+def saveJsonDB():
+    output = json.dumps(invertedindex)
+    db = open("DB.json", "w")
+    db.write(output)
+    db.close()
