@@ -44,7 +44,7 @@ def loop():
                         index = invertedindex[0].index(d)
                         try:
                             scoreindex = invertedindex[1][0][index].index(result[3])
-                            invertedindex[1][1][index][scoreindex]+=1
+                            invertedindex[1][1][index][scoreindex] += 1
                         except IndexError:
                             invertedindex[1][0][index].append(result[3])
                             invertedindex[1][1][index].append(0)
