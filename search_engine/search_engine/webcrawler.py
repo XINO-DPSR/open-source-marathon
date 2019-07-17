@@ -13,17 +13,14 @@ def crawl(url):
     response = requests.get(url)
     page = response.text
     baseurl = response.url
-    matches = re.findall("<a((?!href).)* href=\"(?!\")([-a-zA-Z0-9@:%_\+.~#?&//=\s]*)\">", page)
+    matches = re.findall('<a((?!href).)* href=\"(?!\")([-a-zA-Z0-9@:%_\+.~#?&//=\s]*)\">', page)
     urls = []
     for match in matches:
-        links = re.findall("href=\"(?!\")([-a-zA-Z0-9@:%_\+.~#?&//=\s]*)\"", match)
-        for link in links:
-            sub = link[6, -1]
-            if sub.startswith('/'):
-                urls.append(baseurl+sub)
-            else:
-                urls.append(sub)
-    return page, datetime.datetime.utcnow().timestamp(), urls
+        if match[1].startswith('/'):
+            urls.append(baseurl+match[1])
+        else:
+            urls.append(match[1])
+    return page, datetime.datetime.utcnow().timestamp(), urls, response.url
 
 
 def loop():
@@ -86,5 +83,11 @@ def parse(data):
     for match in matches:
         content = match[7:-8].strip()
         metadata.append(content)
+
+    pattern = "<(?:p|h\d{1})>((?!<).)*<\/(?:p|h\d{1})>"
+    matches = re.findall(pattern, data)
+    for match in matches:
+        content = re.findall(">((?!<).)*<\/", match)
+        metadata.append(content[1:-2].strip())
 
     return metadata
