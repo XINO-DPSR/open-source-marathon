@@ -25,22 +25,11 @@ def ff_crawler(url):
 
     rp = robotparser.RobotFileParser()
     rp.set_url(path.join(url, 'robots.txt'))
-    rp.read()
-
     if not rp.can_fetch('*', url):
-        sys.exit()
-
-    rrate = rp.request_rate('*')
-    delay = rp.crawl_delay('*')
-
-    if rrate is None and delay is None:
         crawl_delay = 0
-    elif delay is None:
-        crawl_delay = rrate.seconds // rrate.requests
-    elif rrate is None:
-        crawl_delay = delay
     else:
-        crawl_delay = max(rrate.seconds // rrate.requests, delay)
+        rp.read()
+        crawl_delay = rp.crawl_delay('*')
 
     # Download webpage.
     res = requests.get(url)
@@ -66,6 +55,10 @@ def ff_crawler_driver(url, depth=5):
         all_urls[level + 1] = []
         for link in all_urls[level]:
             if link not in crawled:
-                all_urls[level + 1] += ff_crawler(link)[2]
-                crawled.append(link)
+                try:
+                    all_urls[level + 1] += ff_crawler(link)[2]
+                    crawled.append(link)
+                except:
+                    continue
         level += 1
+    return all_urls
