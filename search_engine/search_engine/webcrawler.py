@@ -2,8 +2,10 @@
 # webcrawler.py - Make a basic crawler.
 
 import requests
+import os
 from html.parser import HTMLParser
 from datetime import datetime
+from urllib.parse import urljoin
 
 
 class MyHTMLParser(HTMLParser):
@@ -29,5 +31,5 @@ def crawler(url):
     parser = MyHTMLParser()
     parser.links = []
     parser.feed(res.text)   # feed source code to parser
-    links = [link['href'] for link in parser.links]
+    links = [urljoin(url, link['href']) for link in parser.links]
     return res.text, access_time, links
