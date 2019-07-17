@@ -8,6 +8,8 @@ toCrawlUrls = []  # an array of array of urls, sorted according to domains
 toCrawl = []  # an array of domain names
 lastCrawled = []  # an array to store when was the domain last crawled
 
+invertedindex = ([], [])
+
 
 def crawl(url):
     response = requests.get(url)
@@ -23,7 +25,7 @@ def crawl(url):
                 urls.append(baseurl+sub)
             else:
                 urls.append(sub)
-    return page, datetime.datetime.utcnow().timestamp(), urls
+    return page, datetime.datetime.utcnow().timestamp(), urls, response.url
 
 
 def loop():
@@ -34,9 +36,19 @@ def loop():
             try:
                 url = toCrawlUrls.pop(0)
                 result = crawl(url)
-                for link in result[3]:
+                for link in result[2]:
                     addLink(link)
-                # do something with data obtained
+                metadata = parse(result[0])
+                for d in metadata:
+                    try:
+                        index = invertedindex[0].index(d)
+                        try:
+                            invertedindex[1][index].index(result[3])
+                        except IndexError:
+                            invertedindex[1][index].append(result[3])
+                    except IndexError:
+                        invertedindex[0].append(d)
+                        invertedindex[1].append([result[3]])
             except IndexError:
                 toCrawl.pop(index)
                 toCrawlUrls.pop(index)
@@ -87,4 +99,10 @@ def parse(data):
         content = match[7:-8].strip()
         metadata.append(content)
 
-    return metadata
+    tokens = []
+    for d in metadata:
+        words = re.split(' |,|;|.|\'|\"|:|?|/|*|-|+|`|~|!|@|#|$|%|^|&|(|)|_|+', d)
+        for word in words:
+            tokens.append(word)
+
+    return tokens
