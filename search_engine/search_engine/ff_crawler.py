@@ -27,7 +27,6 @@ def ff_crawler(url):
     rp.set_url(path.join(url, 'robots.txt'))
     crawl_delay = 0
     if not rp.read() is None:
-        rp.read()
         if not rp.can_fetch('*', url):
             return '', None, [], 0
         if not rp.crawl_delay('*') is None: 
