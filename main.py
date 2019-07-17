@@ -99,7 +99,7 @@ class Crawler():
                     print ''
                     crawled.append(newurl)
                     for i in self.toCrawl:
-                        if baseURL in i:
+                        if baseURL in i and baseURL != i[0:len(i)-1]:
                             global allows
                             global disallows
                             allowed = True
@@ -134,6 +134,7 @@ class Crawler():
                                     allowed = False
                                     break
                             if allowed:
+                                time.sleep(0.1)
                                 newcrawler = Crawler(i)
                 else:
                     print 'Could not access webpage.'
