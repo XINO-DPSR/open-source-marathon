@@ -25,11 +25,13 @@ def ff_crawler(url):
 
     rp = robotparser.RobotFileParser()
     rp.set_url(path.join(url, 'robots.txt'))
-    if not rp.can_fetch('*', url):
-        crawl_delay = 0
-    else:
+    crawl_delay = 0
+    if not rp.read() is None:
         rp.read()
-        crawl_delay = rp.crawl_delay('*')
+        if not rp.can_fetch('*', url):
+            return '', None, [], 0
+        if not rp.crawl_delay('*') is None: 
+            crawl_delay = rp.crawl_delay('*')
 
     # Download webpage.
     res = requests.get(url)
