@@ -8,6 +8,7 @@ from html.parser import HTMLParser
 from datetime import datetime
 from os import path
 from urllib import robotparser
+from urllib.parse import urljoin
 
 
 class MyHTMLParser(HTMLParser):
@@ -31,7 +32,7 @@ def ff_crawler(url):
 
     rrate = rp.request_rate('*')
     delay = rp.crawl_delay('*')
-    
+
     if rrate is None and delay is None:
         crawl_delay = 0
     elif delay is None:
@@ -52,7 +53,7 @@ def ff_crawler(url):
     parser = MyHTMLParser()
     parser.links = []
     parser.feed(res.text)   # feed source code to parser
-    links = [link['href'] for link in parser.links]
+    links = [urljoin(url, link['href']) for link in parser.links]
     return res.text, access_time, links, crawl_delay
 
 
