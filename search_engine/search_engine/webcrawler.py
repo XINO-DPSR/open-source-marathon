@@ -10,7 +10,7 @@ def crawl(url):
     matches = re.findall("<a((?!href).)* href=\"(?!\")([-a-zA-Z0-9@:%_\+.~#?&//=\s]*)\">", page)
     urls = []
     for match in matches:
-        links = re.findall("href=\"(?!\")([-a-zA-Z0-9@:%_\+.~#?&//=\s]*)\">", match)
+        links = re.findall("href=\"(?!\")([-a-zA-Z0-9@:%_\+.~#?&//=\s]*)\">", match[1])
         for link in links:
             sub = link[6, -1]
             if sub.startswith('/'):
