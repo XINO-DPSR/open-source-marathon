@@ -12,15 +12,15 @@ lastCrawled = []  # an array to store when was the domain last crawled
 def crawl(url):
     response = requests.get(url)
     page = response.text
-    baseUrl = response.url
+    baseurl = response.url
     matches = re.findall("<a((?!href).)* href=\"(?!\")([-a-zA-Z0-9@:%_\+.~#?&//=\s]*)\">", page)
     urls = []
     for match in matches:
-        links = re.findall("href=\"(?!\")([-a-zA-Z0-9@:%_\+.~#?&//=\s]*)\">", match)
+        links = re.findall("href=\"(?!\")([-a-zA-Z0-9@:%_\+.~#?&//=\s]*)\"", match)
         for link in links:
             sub = link[6, -1]
             if sub.startswith('/'):
-                urls.append(baseUrl+sub)
+                urls.append(baseurl+sub)
             else:
                 urls.append(sub)
     return page, datetime.datetime.utcnow().timestamp(), urls
@@ -73,4 +73,18 @@ def addLink(url):
 
 
 def parse(data):
-    pattern1 = ""
+    metadata = []
+
+    pattern = "<meta (?!content).*(?:author|description|keywords).*content=\"(?!\")([-a-zA-Z0-9@:%_\+., ~#?&//=\s]*)\">"
+    matches = re.findall(pattern, data)
+    for match in matches:
+        content = re.findall("content=\"(?!\")([-a-zA-Z0-9@:%_\+., ~#?&//=\s]*)\"", match)[0]
+        metadata.append(content[9:-1])
+
+    pattern = "<title>.*<\/title>"
+    matches = re.findall(pattern, data)
+    for match in matches:
+        content = match[7:-8].strip()
+        metadata.append(content)
+
+    return metadata
