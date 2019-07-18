@@ -56,7 +56,9 @@ def crawl(link):
     # Printing visible text of the webpage
     print("Text of the webpage => ")
     print(text)
-
+    # Printing metadata
+    print("Metadata of the webpage => ")
+    print(urls)
 
 # Take a URL input
 x = input(
