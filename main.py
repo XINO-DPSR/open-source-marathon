@@ -98,9 +98,6 @@ class Crawler():
                     parser.baseurl = self.baseURL
                     htmll = res.read()
                     parser.feed(htmll.decode())
-                    f = open("data/"+"output"+".txt", "w+")
-                    f.write("# "+newurl+"\n"+parser.data)
-                    f.close()
                     print("Visited " + newurl + ",")
                     print("at " + info['date'] + ".")
                     print('')
