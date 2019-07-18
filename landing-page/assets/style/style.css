@@ -8,11 +8,13 @@
 }
 body.dark {
   color: white;
+  background-color: #000;
   font-family: "Montserrat Regular";
 }
 body {
   color: black;
   font-family: "Montserrat Regular";
+  overflow: hidden;
 }
 * {
   font-family: "Montserrat Regular";
@@ -93,7 +95,7 @@ main {
   border: 0;
   outline: 0;
   padding: 0;
-  transition: all 200ms ease-in;
+  transition: all 400ms ease-in;
   cursor: pointer;
 }
 .primary {
@@ -161,6 +163,34 @@ main {
 .glitch:hover:after {
   animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both
     infinite;
+}
+.search_box {
+  clear: both;
+  margin-top: 4vh;
+  opacity: 0;
+}
+.search_box > div {
+  width: 80vw;
+  height: 10vw;
+  background-color: #111;
+  border-radius: 20px;
+  margin: 1vh 10vw;
+}
+
+.search_box > div.dark {
+  width: 80vw;
+  height: 10vw;
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 1vh 10vw;
+}
+.search_header {
+  color: #111;
+  text-align: center;
+}
+.search_header.dark {
+  color: #fff;
+  text-align: center;
 }
 
 @media only screen and (max-width: 400px) {

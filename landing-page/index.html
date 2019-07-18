@@ -14,6 +14,7 @@
 			integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 			crossorigin="anonymous"
 		></script>
+		<script src="https://unpkg.com/scrollreveal"></script>
 	</head>
 	<body class="">
 		<div class="cover"></div>
@@ -50,11 +51,12 @@
 							<div class="item">
 								<form class="form">
 									<input
-										type="email"
+										type="text"
 										class="field"
 										placeholder="Search Here!"
 										required
 									/>
+
 									<button
 										type="button"
 										class="btn primary inside uppercase"
@@ -78,18 +80,54 @@
 				</div>
 			</div>
 		</main>
-		<footer></footer>
+		<div
+			id="in"
+			style="height: 100vh; width: 100%; position: relative; top: 100vh;"
+		></div>
+		<div class="search_box" style=" clear: both;">
+			<h2 class="search_header">Search Results</h2>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
 		<script>
 			$("#check").click(function() {
 				var thisCheck = $(this);
 				if (thisCheck.is(":checked")) {
 					$("body").addClass("dark");
 					$(".card").addClass("dark");
+					$(".search_header").addClass("dark");
 					$(".cover").addClass("dark");
+					$(".search_box > div").addClass("dark");
 				} else if (!thisCheck.is(":checked")) {
 					$("body").removeClass("dark");
 					$(".card").removeClass("dark");
 					$(".cover").removeClass("dark");
+					$(".search_header").removeClass("dark");
+					$(".search_box > div").removeClass("dark");
+				}
+			});
+			$(".btn").click(function() {
+				if ($("input:text").val() == "") {
+					alert("no");
+				} else {
+					$("body").css("overflow", "visible");
+					var position = $("#in").offset().top;
+					$("body, html").animate(
+						{
+							scrollTop: position
+						},
+						1000
+					);
+					setTimeout(function() {
+						$(".search_box").animate({ opacity: 1 }, 500);
+					}, 1000);
 				}
 			});
 		</script>
