@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+      <div class="main">
+        <div class="logo">
+          <img src="inqlogo3.png" >
+
+        </div>
+        <div class="searchbar">
+          <input class="subject" name="subject" placeholder="Looking for..." required></input>
+        <a href="#results">  <button type="submit" name="bruhform" class="searchbtn" value="submit">Search</button></a>
+        </div>
+        <div class="themebtn">
+          <ul>
+            <li>
+              <span>Dark</span>
+              <span>Light</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <div class: "bottom">  <div class="hello" id="results">
+<p id=searchres> Search Results: </p>
+
+        <section class="para1"><h1>XINO Cool</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </section>
+         <section class="para2"> <h1>XINO DPS Rohini</h1> Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            sunt in culpa.  <a href="#">  <button type="submit" name="bruhform" class="blah" value="submit">Home</button></a> </section>
+          <section class="para3"><h1>Techfest-XINO</h1> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+             Excepteur sint occaecat cupidatat non proident.
+             </section></div>
+           </div>
+
+        </body>
+
+
+
+
+
+          <script type="text/javascript">
+            $(document).ready(function(){
+              $('ul').click(function(){
+                  $('ul').toggleClass('active')
+                  $('body').toggleClass('dark')
+                  $('searchres').toggleClass('dark')
+              })
+            });
+          </script>
+
+<script>   window.scroll({
+  top: 2500,
+  left: 0,
+  behavior: 'smooth'
+});
+// Scroll certain amounts from current position
+window.scrollBy({
+  top: 100,
+  left: 0,
+  behavior: 'smooth'
+});
+// Scroll to a certain element
+document.querySelector('#results').scrollIntoView({
+  behavior: 'smooth'
+});
+$(window).scroll(function() {
+  var scrollTop = $(this).scrollTop();
+
+  $('.hello').css({
+    opacity: function() {
+      var elementHeight = $(this).height();
+      return 1 - (elementHeight - scrollTop) / elementHeight;
+    }
+  });
+});
+</script>
+
+
+</html>
