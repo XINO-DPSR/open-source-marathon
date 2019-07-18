@@ -1,4 +1,4 @@
-import urllib.request, urllib.error, urllib.parse
+import urllib2
 
 class RobotsURLParser():
     def __init__(self):
@@ -51,11 +51,10 @@ class Parser():
         headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36" # Sets User Agent
         urlparser = RobotsURLParser()
         newurl = urlparser.parse(url)
-        req = urllib.request.Request(newurl, headers = headers) # Initializes Request
-        res = urllib.request.urlopen(req) # Gets Response
+        req = urllib2.Request(newurl, headers = headers) # Initializes Request
+        res = urllib2.urlopen(req) # Gets Response
 
         self.robots = res.read()
-        self.robots = self.robots.decode()
         self.robots = self.robots.split("\n")
         for line in self.robots:
             if line == "\n":
@@ -92,7 +91,7 @@ class Parser():
                             self.disallows[self.currentUserAgent].append(newparam)
                 elif param[0].lower() == "Allow".lower():
                     psplit = param[1].replace("?*","").replace("?","").replace("*","").split("//")
-                    print(psplit)
+                    print psplit
                     if len(psplit) == 1:
                         newparam = psplit[0]
                     else:

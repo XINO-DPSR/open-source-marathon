@@ -1,6 +1,6 @@
-import urllib.request, urllib.error, urllib.parse # Libraries
+import urllib2 # Libraries
 import sys
-import html.parser # HTMLParser
+import HTMLParser # HTMLParser
 import robots
 import time
 
@@ -31,7 +31,7 @@ class URLParser():
         for i in self.urlconvs:
             if i in url:
                 okurl = True
-        if okurl is False:
+        if okurl == False:
             url = "http://" + url
         return url
 
@@ -40,7 +40,7 @@ crawled = []
 allows = []
 disallows = []
 
-class Parser(html.parser.HTMLParser):
+class Parser(HTMLParser.HTMLParser):
 
    anchors = list()
    data = ""
@@ -64,8 +64,8 @@ class Crawler():
         urlparser = URLParser()
         baseurl2 = urlparser.parse(baseurl)
         if baseurl2 not in crawled:
-            print("Starting Crawler on " + baseurl)
-            print('')
+            print "Starting Crawler on " + baseurl
+            print ''
         self.baseURL = baseurl
         self.externalURLs = []
         self.toCrawl = []
@@ -78,26 +78,25 @@ class Crawler():
             if baseURL in newurl:
                 headers = {} # Initializes header
                 headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36" # Sets User Agent
-                req = urllib.request.Request(newurl, headers = headers) # Initializes Request
-                res = urllib.request.urlopen(req) # Gets Response
+                req = urllib2.Request(newurl, headers = headers) # Initializes Request
+                res = urllib2.urlopen(req) # Gets Response
                 info = res.info() # Gets Request info
                 if str(res.code)[0] == "2":
                     parser = Parser()
                     parser.baseurl = self.baseURL
-                    htmll = res.read()
-                    parser.feed(htmll.decode())
-                    f = open("data/"+"output"+".txt", "w+")
+                    parser.feed(res.read())
+                    f = open("data/"+time.strftime("%Y-%m-%d-%H-%M-%S")+".txt", "w+")
                     f.write("# "+newurl+"\n"+parser.data)
                     f.close()
-                    print("Visited " + newurl + ",")
-                    print("at " + info['date'] + ".")
-                    print('')
-                    print('Found links:')
-                    print('')
+                    print "Visited " + newurl + ","
+                    print "at " + info['date'] + "."
+                    print ''
+                    print 'Found links:'
+                    print ''
                     for i in parser.anchors:
-                        print(i)
+                        print i
                         self.toCrawl.append(i)
-                    print('')
+                    print ''
                     crawled.append(newurl)
                     for i in self.toCrawl:
                         if baseURL in i:
@@ -114,7 +113,7 @@ class Crawler():
                                             yes = True
                                             break
                                     allowed = yes
-                                    if allowed is False:
+                                    if allowed == False:
                                         break
                                 elif index in i:
                                     allowed = False
@@ -129,7 +128,7 @@ class Crawler():
                                             yes = False
                                             break
                                     allowed = yes
-                                    if allowed is False:
+                                    if allowed == False:
                                         break
                                 elif index in i:
                                     allowed = False
@@ -137,7 +136,7 @@ class Crawler():
                             if allowed:
                                 newcrawler = Crawler(i)
                 else:
-                    print('Could not access webpage.')
+                    print 'Could not access webpage.'
             else:
                 self.externalURLs.append(newurl)
                 self.crawled.append(newurl)
