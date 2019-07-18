@@ -12,10 +12,12 @@ import glob
 global baseURL
 baseURL = ''
 
+
 class URLParser():
     def __init__(self):
         self.urlconvs = ["https://", "http://"]
         self.doNots = ["mailto:", "tel:"]
+
     def parse(self, url, baseurl=False):
         if url[0:2] == "//":
             url = "http:" + url
@@ -32,7 +34,7 @@ class URLParser():
             if i in url:
                 return ''
         okurl = False
-        
+
         for i in self.urlconvs:
             if i in url:
                 okurl = True
@@ -40,45 +42,49 @@ class URLParser():
             url = "http://" + url
         return url
 
+
 crawled = []
 
 allows = []
 disallows = []
 
+
 class Parser(html.parser.HTMLParser):
 
-   anchors = list()
-   data = ""
-   metadata = list()
+    anchors = list()
+    data = ""
+    metadata = list()
 
-   def __init__(self):
-       super().__init__()
-       self.reset()
-       self.metadata = list()
+    def __init__(self):
+        super().__init__()
+        self.reset()
+        self.metadata = list()
 
-   #HTML Parser Methods
-   def handle_starttag(self, startTag, attrs):
-       if startTag == "a":
-           for attr in attrs:
-               if attr[0] == "href":
-                   urlparser = URLParser()
-                   newurl = urlparser.parse(attr[1], baseURL)
-                   if newurl == '':
-                       pass
-                   else:
+    # HTML Parser Methods
+    def handle_starttag(self, startTag, attrs):
+        if startTag == "a":
+            for attr in attrs:
+                if attr[0] == "href":
+                    urlparser = URLParser()
+                    newurl = urlparser.parse(attr[1], baseURL)
+                    if newurl == '':
+                        pass
+                    else:
                         self.anchors.append(newurl)
-       if startTag == "meta":
-           name = ""
-           content = ""
-           for attr in attrs:
-               if attr[0] == "name":
+        if startTag == "meta":
+            name = ""
+            content = ""
+            for attr in attrs:
+                if attr[0] == "name":
                     name = attr[1]
-               elif attr[0] == "content":
+                elif attr[0] == "content":
                     content = attr[1]
-           if name != "" and content != "":
-                self.metadata.append({name,content})
-   def handle_data(self, data):
-       self.data+=data
+            if name != "" and content != "":
+                self.metadata.append({name, content})
+
+    def handle_data(self, data):
+        self.data += data
+
 
 class Crawler():
     def __init__(self, baseurl):
@@ -91,17 +97,20 @@ class Crawler():
         self.externalURLs = []
         self.toCrawl = []
         self.crawl(self.baseURL)
-    def crawl(self, url): # Main Function
+
+    def crawl(self, url):  # Main Function
         urlparser = URLParser()
         newurl = urlparser.parse(url)
         if newurl not in crawled:
             global baseURL
             if baseURL in newurl:
-                headers = {} # Initializes header
-                headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36" # Sets User Agent
-                req = urllib.request.Request(newurl, headers = headers) # Initializes Request
-                res = urllib.request.urlopen(req) # Gets Response
-                info = res.info() # Gets Request info
+                headers = {}  # Initializes header
+                # Sets User Agent
+                headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"
+                req = urllib.request.Request(
+                    newurl, headers=headers)  # Initializes Request
+                res = urllib.request.urlopen(req)  # Gets Response
+                info = res.info()  # Gets Request info
                 if str(res.code)[0] == "2":
                     parser = Parser()
                     parser.baseurl = self.baseURL
@@ -112,7 +121,8 @@ class Crawler():
                     allmetas = ""
                     for i in meta:
                         allmetas += list(i)[0]+"|"+list(i)[1]+"\n"
-                    f = open("temp/"+time.strftime("%Y-%m-%d-%H-%M-%S")+".txt", "w+")
+                    f = open(
+                        "temp/"+time.strftime("%Y-%m-%d-%H-%M-%S")+".txt", "w+")
                     f.write("#"+newurl+"#\n"+allmetas+"#"+parser.data)
                     f.close()
                     print("Visited " + newurl + ",")
@@ -173,6 +183,7 @@ class Crawler():
                 self.externalURLs.append(newurl)
                 self.crawled.append(newurl)
 
+
 def main(url):
     files = glob.glob('temp/*.txt')
     for f in files:
@@ -213,14 +224,15 @@ def main(url):
                         if i != "":
                             # print i
                             isplit = i.split("|")
-                            md += "**Name:** "+isplit[1]+", **Content:** "+isplit[0]+"\n"
+                            md += "**Name:** " + \
+                                isplit[1]+", **Content:** "+isplit[0]+"\n"
             wordset = fi[3].replace("\n", " ").split(" ")
             words = set()
             for i in wordset:
                 words.add(i)
-            md+= "\n\n## Wordset\n\n"+repr(words)+"\n\n\n"
+            md += "\n\n## Wordset\n\n"+repr(words)+"\n\n\n"
 
-        for i in range(100 // len(files)): 
+        for i in range(100 // len(files)):
             sys.stdout.write("#")
             sys.stdout.flush()
 
@@ -230,8 +242,9 @@ def main(url):
     f.close()
     print('')
     print('Outputted to output/'+fn)
-        
-    
 
-if __name__ == '__main__': # Only runs file as long as it's not used as a library.
-    main(sys.argv[1]) # Passes in URL as parameter ex. (python main.py https://google.com)
+
+# Only runs file as long as it's not used as a library.
+if __name__ == '__main__':
+    # Passes in URL as parameter ex. (python main.py https://google.com)
+    main(sys.argv[1])
