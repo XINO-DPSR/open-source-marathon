@@ -14,12 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.urls import path
 from django.contrib import admin
-from src import views as src_views
-# Defining routes for the search engine
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    path('', src_views.home, name='home'),
-    path('search/', src_views.search, name='search'),
 ]
