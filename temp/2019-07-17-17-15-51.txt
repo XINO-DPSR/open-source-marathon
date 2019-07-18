@@ -1,0 +1,23 @@
+#https://sayamkanwar.com/na.html#
+#
+
+
+	Temporarily Unavailable | Sayam Kanwar
+	
+	
+		body {
+			background: #474787;
+		}
+
+		h1 {
+			color: #fff;
+			font-size: 3.5em;
+			margin-top: 270px;
+		}
+	
+
+
+
+Temporarily Unavailable!
+
+
